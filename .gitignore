@@ -2,8 +2,9 @@
 .terraform
 terraform.tfstate
 terraform.tfvars
-*.tfstate*
-
+**/*.tfstate*
+terraform/.terraform
+terraform/*.tfvars*
 # Kubernetes files
 
 # Helm files
