@@ -25,7 +25,7 @@ jobs:
     
     - name: Terraform init, plan and apply
       run: |
-        cd /home/runner/work/app-project-devops/
+        cd /home/runner/work/app-project-devops/terraform/
         ls
         echo `pwd`
         echo "tfpath ${{ github.event.inputs.tfpath }}"
