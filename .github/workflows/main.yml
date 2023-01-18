@@ -24,8 +24,6 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.3
     
     - name: Terraform init, plan and apply
-      env:
-        TERRAFORM_CLI_PATH: terraform
       run: |
         cd $HOME
         echo `pwd`
