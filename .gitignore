@@ -6,6 +6,7 @@ terraform.tfvars
 terraform/.terraform
 terraform/*.tfvars*
 terraform/_provider.tf
+
 # Kubernetes files
 
 # Helm files
