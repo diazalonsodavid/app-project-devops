@@ -25,6 +25,8 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.3
     
     - name: Terraform init, plan and apply
+      env:
+        do_token: ${{ secrets.DO_TOKEN }} 
       run: |
         echo `pwd`
         ls
