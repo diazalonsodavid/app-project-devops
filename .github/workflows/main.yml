@@ -33,8 +33,6 @@ jobs:
         echo "** Running Terraform Validate**"
         terraform validate
 
-        echo "** Running Terraform Plan**"
-        terraform plan
         env 
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve -var="do_token=${{ secrets.DO_TOKEN }}"
