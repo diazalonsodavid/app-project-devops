@@ -5,7 +5,7 @@ terraform.tfvars
 **/*.tfstate*
 terraform/.terraform
 terraform/*.tfvars*
-terraform/_provider.tf
+#terraform/_provider.tf
 
 # Kubernetes files
 
