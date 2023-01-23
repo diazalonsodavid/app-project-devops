@@ -4,6 +4,7 @@ resource "digitalocean_kubernetes_cluster" "bootcamp-project" {
   version = "1.25.4-do.0"
   ha = true # Provides a high availability (HA) option that provides 99.5% SLA uptime creating multiple backup replicas of each control plane component.
 
+
   node_pool {
     name       = "autoscale-worker-pool"
     size       = "s-2vcpu-2gb"
