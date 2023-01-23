@@ -14,7 +14,6 @@ jobs:
     env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        do_token: ${{ secrets.DO_TOKEN}}
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3.3.0
@@ -24,6 +23,7 @@ jobs:
     
     - name: Terraform init, plan and apply
       run: |
+        export do_token=${{ secrets.DO_TOKEN}}
         echo `pwd` 
         cd terraform
         echo "tfpath ${{ github.event.inputs.tfpath }}"
