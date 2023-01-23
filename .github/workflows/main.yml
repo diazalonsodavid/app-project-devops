@@ -35,7 +35,7 @@ jobs:
 
         echo "** Running Terraform Plan**"
         terraform plan
-
+        env 
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve
     - name: Terraform Destroy
