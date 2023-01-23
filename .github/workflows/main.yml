@@ -11,10 +11,11 @@ jobs:
   trigger-cd:
     name: Deploy Site
     runs-on: ubuntu-latest
-#    env:
-#        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 #        do_token: ${{ secrets.DO_TOKEN}}
+        DO_TOKEN: ${{ secrets.DO_TOKEN}}
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3.3.0
