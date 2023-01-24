@@ -57,5 +57,16 @@ jobs:
     - name: Deploy
       run: |        
          cd mysql-helm
-         echo "helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace"
-         helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace 
+         helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace
+    
+    - name: Create Secret
+      run: |
+        kubectl -n ${{ vars.NAMESPACE }} create secret docker-registry app-bootcamp --docker-server=ghcr.io --docker-username=${{ vars.DOCKER_USER }} --docker-password=${{ secrets.DOCKER_PASS }}  --docker-email=${{ vars.DOCKER_EMAIL }}
+    
+    - name: Deploy App
+      run: |
+        kubectl apply -f deployment.yaml -n ${{ vars.NAMESPACE }}
+    
+    - name: Create Servide
+      run: |
+        kubectl apply -f service.yaml -n ${{ vars.NAMESPACE }}

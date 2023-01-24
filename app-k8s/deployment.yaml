@@ -1,10 +1,10 @@
 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: app-bootcamp
-  labels:
-    name: app-bootcamp
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+  #name: app-bootcamp
+  #labels:
+    #name: app-bootcamp
 ---
 
 apiVersion: apps/v1
@@ -35,6 +35,5 @@ spec:
                 postStart:
                   exec:
                     command: ["/bin/bash", "-c", "python manage.py makemigrations app; python manage.py migrate"]
-                    #args: ["python manage.py makemigrations app; python manage.py migrate"]
             imagePullSecrets:
             - name: app-bootcamp
