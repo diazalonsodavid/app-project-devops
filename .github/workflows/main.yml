@@ -41,6 +41,17 @@ jobs:
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve -var="do_token=${{ secrets.DO_TOKEN }}"
     
+    - name: Save kubeconfig
+      run: doctl kubernetes cluster kubeconfig save bootcamp-project
+
+    - name: Set up kubectl
+      uses: matootie/dokube@v1.4.0
+      with:
+        personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        clusterName: bootcamp-project
+    # Run any kubectl commands you want!
+    - name: Get nodes
+      run: kubectl get nodes
 #    - name: Terraform Destroy
 #      run: |
 #        echo "** Running Terraform Destroy**"
