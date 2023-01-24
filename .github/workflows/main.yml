@@ -43,18 +43,24 @@ jobs:
     
     - name: Save kubeconfig
       run: doctl kubernetes cluster kubeconfig save bootcamp-project
-
+    
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+    
     - name: Set up kubectl
       uses: matootie/dokube@v1.4.0
       with:
         personalAccessToken: ${{ secrets.DO_TOKEN }}
         clusterName: bootcamp-project
+    
     # Run any kubectl commands you want!
     - name: Get nodes
       run: kubectl get nodes
-#    - name: Terraform Destroy
-#      run: |
-#        echo "** Running Terraform Destroy**"
-#        terraform plan -destroy
-#        terraform destroy -auto-approve
-#      working-directory: ${{ github.event.inputs.tfpath }}
+    
+    - name: Run chart-releaser
+      uses: helm/chart-releaser-action@v1.5.0
+      with:
+        charts_dir: mysql-helm
+        charts_repo_url: https://diazalonsodavid/app-project-devops
+      env:
+        CR_TOKEN: "${{ secrets.TOKEN }}"
