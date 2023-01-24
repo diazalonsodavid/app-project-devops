@@ -55,9 +55,7 @@ jobs:
     
     # Run any kubectl commands you want!
     - name: Deploy
-      run: |
-         pwd
+      run: |        
          cd mysql-helm
-         pwd
-         echo "helm upgrade --install --atomic app-bootcamp --namespace ${{ env.NAMESPACE }} . --create-namespace"
-         helm upgrade --install --atomic app-bootcamp --namespace ${{ env.NAMESPACE }} . --create-namespace 
+         echo "helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace"
+         helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace 
