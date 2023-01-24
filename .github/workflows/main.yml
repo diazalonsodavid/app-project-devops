@@ -61,7 +61,12 @@ jobs:
     
     - name: Create Secret
       run: |
-        kubectl -n ${{ vars.NAMESPACE }} create secret docker-registry app-bootcamp --docker-server=ghcr.io --docker-username=${{ vars.DOCKER_USER }} --docker-password=${{ secrets.DOCKER_PASS }}  --docker-email=${{ vars.DOCKER_EMAIL }}
+        kubectl -n ${{ vars.NAMESPACE }} create secret docker-registry app-bootcamp \
+        --save-config
+        --docker-server=ghcr.io \
+        --docker-username=${{ vars.DOCKER_USER }} \
+        --docker-password=${{ secrets.DOCKER_PASS }}  \
+        --docker-email=${{ vars.DOCKER_EMAIL }}
     
     - name: Deploy App
       run: |
