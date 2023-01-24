@@ -59,4 +59,4 @@ jobs:
          pwd
          cd mysql-helm
          pwd
-         helm upgrade --install --atomic app-bootcamp --namespace app-bootcamp --create-namespace 
+         helm upgrade --install --atomic app-bootcamp --namespace ${{ env.NAMESPACE }} . --create-namespace 
