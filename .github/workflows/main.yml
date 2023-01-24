@@ -54,13 +54,8 @@ jobs:
         clusterName: bootcamp-project
     
     # Run any kubectl commands you want!
-    - name: Get nodes
-      run: kubectl get nodes
-    
-    - name: Run chart-releaser
-      uses: helm/chart-releaser-action@v1.5.0
-      with:
-        charts_dir: mysql-helm
-        charts_repo_url: https://diazalonsodavid/app-project-devops
-      env:
-        CR_TOKEN: "${{ secrets.TOKEN }}"
+    - name: Deploy
+      run: |
+         pwd
+         cd mysql-helm
+         helm upgrade --install --atomic app-bootcamp --namespace ${{ env.NAMESPACE }} --create-namespace 
