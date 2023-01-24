@@ -65,8 +65,10 @@ jobs:
     
     - name: Deploy App
       run: |
+        cd app-k8s
         kubectl apply -f deployment.yaml -n ${{ vars.NAMESPACE }}
     
     - name: Create Servide
       run: |
+        cd app-k8s
         kubectl apply -f service.yaml -n ${{ vars.NAMESPACE }}
