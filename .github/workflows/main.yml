@@ -1,11 +1,11 @@
 name: Repository Dispatch
-#on:
-#  repository_dispatch:
-#    types: [trigger-cd]
 on:
-  push:
-    branches:
-      - 'main'
+  repository_dispatch:
+    types: [trigger-cd]
+    #on:
+    #  push:
+    #    branches:
+    #      - 'main'
 
 jobs:
   trigger-cd:
