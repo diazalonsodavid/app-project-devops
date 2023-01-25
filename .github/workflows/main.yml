@@ -46,6 +46,8 @@ jobs:
     
     - name: Install Helm
       uses: azure/setup-helm@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
     
     - name: Set up kubectl
       uses: matootie/dokube@v1.4.0
@@ -54,7 +56,7 @@ jobs:
         clusterName: bootcamp-project
     
     # Run any kubectl commands you want!
-    - name: Deploy
+    - name: Deploy MySQL
       run: |        
          cd mysql-helm
          helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace
