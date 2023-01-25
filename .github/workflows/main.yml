@@ -63,6 +63,7 @@ jobs:
       run: |
         kubectl -n ${{ vars.NAMESPACE }} create secret docker-registry app-bootcamp \
         --save-config \
+        --dry-run=client \
         --docker-server=ghcr.io \
         --docker-username=${{ vars.DOCKER_USER }} \
         --docker-password=${{ secrets.DOCKER_PASS }}  \
