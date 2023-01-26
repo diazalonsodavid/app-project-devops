@@ -5,5 +5,6 @@ metadata:
   name: app-bootcamp
   labels:
     app: app-bootcamp
+#  namespace: app-bootcamp
 data:
   .dockerconfigjson: eyJhdXRocyI6eyJnaGNyLmlvIjp7ImF1dGgiOiJaR2xoZW1Gc2IyNXpiMlJoZG1sa09qWTVOV1prWmpBd1pEbGxPR0UxTnpBek1EUXpPV016WVRaaVpqa3hObUZoWmprek1USTNaamc9In19fQ==

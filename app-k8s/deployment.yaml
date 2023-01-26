@@ -1,24 +1,11 @@
 
-kind: Secret
-type: kubernetes.io/dockerconfigjson
-apiVersion: v1
-metadata:
-  name: app-bootcamp
-  labels:
-    app: app-bootcamp
-data:
-  .dockerconfigjson: eyJhdXRocyI6eyJnaGNyLmlvIjp7ImF1dGgiOiJaR2xoZW1Gc2IyNXpiMlJoZG1sa09qWTVOV1prWmpBd1pEbGxPR0UxTnpBek1EUXpPV016WVRaaVpqa3hObUZoWmprek1USTNaamc9In19fQ==
-
----
-
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
     labels:
         app: app-bootcamp
     name: app-bootcamp
-    namespace: app-bootcamp
+#    namespace: app-bootcamp
 spec:
     replicas: 2
     selector:
@@ -31,7 +18,7 @@ spec:
         spec:
             containers:
             - name: app-bootcamp
-              image: ghcr.io/diazalonsodavid/bootcamp/app-project:0.0.1.12
+              image: ghcr.io/diazalonsodavid/bootcamp/app-project:0.0.1.13
               imagePullPolicy: Always
               ports:
                 - name: 
