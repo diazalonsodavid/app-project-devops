@@ -69,6 +69,12 @@ jobs:
         --docker-username=${{ vars.DOCKER_USER }} \
         --docker-password=${{ secrets.DOCKER_PASS }}  \
         --docker-email=${{ vars.DOCKER_EMAIL }}
+        echo "kubectl -n ${{ vars.NAMESPACE }} create secret docker-registry app-bootcamp \
+        --dry-run=client \
+        --docker-server=ghcr.io \
+        --docker-username=${{ vars.DOCKER_USER }} \
+        --docker-password=${{ secrets.DOCKER_PASS }}  \
+        --docker-email=${{ vars.DOCKER_EMAIL }}"
     
     - name: Deploy App
       run: |
