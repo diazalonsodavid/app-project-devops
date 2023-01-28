@@ -71,7 +71,7 @@ jobs:
         cd app-k8s
         kubectl apply -f deployment.yaml -n ${{ vars.NAMESPACE }}
     
-    - name: Create Servide
+    - name: Deploy Prometheus
       run: |
-        cd app-k8s
-        kubectl apply -f service.yaml -n ${{ vars.NAMESPACE }}
+        cd monitoring/prometheus
+        helm upgrade --install --atomic app-bootcamp . 
