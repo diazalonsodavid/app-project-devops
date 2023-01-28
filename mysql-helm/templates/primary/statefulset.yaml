@@ -12,7 +12,7 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
 spec:
-  replicas: 1
+  replicas: 2
   podManagementPolicy: {{ .Values.primary.podManagementPolicy | quote }}
   selector:
     matchLabels: {{ include "common.labels.matchLabels" . | nindent 6 }}
