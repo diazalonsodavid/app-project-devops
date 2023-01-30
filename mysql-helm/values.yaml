@@ -100,7 +100,7 @@ auth:
   ## @param auth.rootPassword Password for the `root` user. Ignored if existing secret is provided
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#setting-the-root-password-on-first-run
   ##
-  rootPassword: "9aFPqugC"
+  rootPassword: ""
   ## @param auth.createDatabase Wheter to create the .Values.auth.database or not
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-on-first-run
   ##
@@ -115,14 +115,14 @@ auth:
   username: "appseed_db_usr"
   ## @param auth.password Password for the new user. Ignored if existing secret is provided
   ##
-  password: "9aFPqugC"
+  password: ""
   ## @param auth.replicationUser MySQL replication user
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#setting-up-a-replication-cluster
   ##
   replicationUser: replicator
   ## @param auth.replicationPassword MySQL replication user password. Ignored if existing secret is provided
   ##
-  replicationPassword: "9aFPqugC"
+  replicationPassword: ""
   ## @param auth.existingSecret Use existing secret for password details. The secret has to contain the keys `mysql-root-password`, `mysql-replication-password` and `mysql-password`
   ## NOTE: When it's set the auth.rootPassword, auth.password, auth.replicationPassword are ignored.
   ##
@@ -529,7 +529,7 @@ secondary:
   name: secondary
   ## @param secondary.replicaCount Number of MySQL secondary replicas
   ##
-  replicaCount: 1
+  replicaCount: 2
   ## @param secondary.hostAliases Deployment pod host aliases
   ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
   ##
