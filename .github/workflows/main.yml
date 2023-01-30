@@ -59,7 +59,7 @@ jobs:
     - name: Deploy MySQL
       run: |        
          cd mysql-helm
-         helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace
+         helm upgrade --install --atomic app-bootcamp --namespace ${{ vars.NAMESPACE }} . --create-namespace --set auth.rootPassword=${{ secrets.DB_PASS }},auth.password=${{ secrets.DB_PASS }},auth.replicationPassword=${{ secrets.DB_PASS }}
 
     - name: Deploy Secret
       run: |
