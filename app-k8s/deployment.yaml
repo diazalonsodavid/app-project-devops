@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: app-bootcamp
-              image: ghcr.io/diazalonsodavid/bootcamp/app-project:0.0.1.13
+              image: ghcr.io/diazalonsodavid/bootcamp/app-project:0.0.1.14
               imagePullPolicy: Always
               ports:
                 - name: 
