@@ -1,51 +1,31 @@
-# Example application in Python and Django
+# Devops: Example of SRE tools application 
 
 ## Description
-This application is developed in python using Django as framework. The only use it has is to serve as an example for testing with the SRE tools in the repository:
-
-https://github.com/diazalonsodavid/app-project-devops
-
-## Requirements
-* Python 3.x
-* Docker
-
-## Installation
-1. Clone the repository
-git clone https://github.com/username/project_name.git
-
-markdown
-Copy code
-2. Build the Docker image
-docker build -t project_name .
-
-markdown
-Copy code
-3. Run the Docker container
-docker run -p 8000:8000 project_name
-
-csharp
-Copy code
-4. Visit http://localhost:8000 in your web browser to access the application
+DevOps project in charge of deploying the project hosted https://github.com/diazalonsodavid/App-Project, using Github Action, Terraform, K8s, Helm, and prometheus tools for monitoring.
 
 ## Usage
-Instructions for using the application.
+### Github Action
+The workflow is executed when the CI of the Github action of https://github.com/diazalonsodavid/App-Project repo is finished. It is designed to build a 3-node auto-scalable kubernetes cluster using terraform.
+Once it is up, the mysql cluster is deployed through Helm and then the application is deployed through k8s.
+Finally the Prometheus tool is deployed with Helm to collect data from the cluster.
 
-## Dockerfile
-Use an official Python runtime as the base image
-FROM python:3.x-slim-buster
+## Terraform
+Terraform builds a Kubernetes cluster in the DigitalOcean cloud. The 3 nodes are auto-scalable if needed.
 
-Set the working directory to /app
-WORKDIR /app
+The terraform.tfstate file is stored in a DigitalOcean Space
 
-Copy the current directory contents into the container at /app
-COPY . /app
+## K8s
 
-Install the required packages
-RUN pip install -r requirements.txt
+K8s is responsible for deploying the application. 
+It has a deployment, a secret and a service.
 
-Set environment variables
-ENV PYTHONUNBUFFERED=1
+The deployment is in charge of deploying the application.
+The secret is used in this case so that the deployment can connect to the container registry and can pull the image compiled in the CI.
+The service in this case is in charge of establishing the connection between the application and the outside.
 
-Run the command to start the Django development server
-CMD python manage.py runserver 0.0.0.0:8000
+## Helm
 
+Helm is used to display the database to be used by the application. It already existed in the Helm repo.
+The desired values will be passed to it with the file values.yaml.
+
+Helm is also used to deploy Prometheus for cluster monitoring. As with MySQL, the values.yaml file will be used to configure the deployment.
