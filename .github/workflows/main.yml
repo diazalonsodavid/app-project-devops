@@ -27,6 +27,11 @@ jobs:
     - name: Setup Terraform CLI
       uses: hashicorp/setup-terraform@v2.0.3
     
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    
     - name: Terraform init, plan and apply
       run: |
         echo `pwd` 
@@ -43,11 +48,6 @@ jobs:
     
     - name: Save kubeconfig
       run: doctl kubernetes cluster kubeconfig save bootcamp-project
-    
-    - name: Install Helm
-      uses: azure/setup-helm@v3
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
     
     - name: Set up kubectl
       uses: matootie/dokube@v1.4.0

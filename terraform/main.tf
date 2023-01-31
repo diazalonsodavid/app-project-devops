@@ -9,7 +9,7 @@ resource "digitalocean_kubernetes_cluster" "bootcamp-project" {
     name       = "autoscale-worker-pool"
     size       = "s-2vcpu-2gb"
     auto_scale = true
-    min_nodes  = 3
+    min_nodes  = 2
     max_nodes  = 5
   }
 }
