@@ -79,4 +79,4 @@ jobs:
     - name: Deploy Prometheus
       run: |
         cd monitoring/prometheus
-        helm upgrade --install --atomic app-bootcamp . 
+        helm upgrade --install app-bootcamp . 
